@@ -1,24 +1,55 @@
-# Lib-Central: Library Management System
+# Sistem Informasi Perpustakaan (SIPUS) - Tugas Kelompok
 
-Aplikasi manajemen perpustakaan untuk pengelolaan buku dan peminjaman.
+## 📝 Deskripsi Proyek
+Proyek ini merupakan aplikasi manajemen perpustakaan berbasis web yang dirancang khusus untuk skala ruang baca Program Studi. Aplikasi ini bertujuan untuk mendigitalisasi proses sirkulasi buku, pengadaan koleksi baru, hingga pelaporan statistik bagi pimpinan.
 
-## 👥 Anggota Tim
+## 🚀 Spesifikasi Teknis
+- **Framework:** CodeIgniter 4 (PHP).
+- **Database:** MySQL.
+- **UI Template:** AdminLTE / SB Admin (Responsive Admin Template).
+- **Architecture:** Modular / HMVC Pattern.
 
-- **Muhammad Yafie Gustaff** - Backend Developer & DevOps
-- [Nama Teman 1] - [Role]
-- [Nama Teman 2] - [Role]
+## 👥 Aktor & Peran (Roles)
+Sistem ini mendukung 3 jenis pengguna:
+1. **Member (Mahasiswa/Dosen):** Melakukan pendaftaran, melihat katalog, dan mengusulkan buku baru.
+2. **Pustakawan (Admin):** Mengelola transaksi peminjaman, pengembalian, status denda, serta manajemen katalog buku.
+3. **Pimpinan (Kaprodi):** Memantau laporan rekapitulasi bulanan dan statistik perpustakaan.
 
-## 🚀 Tech Stack
+## ✨ Fitur Utama
+Aplikasi ini dilengkapi dengan modul-modul berikut:
+* **Manajemen Akun (Permission):** Register & Multi-role login serta pembaruan profil pengguna.
+* **Sirkulasi Peminjaman:** Pencatatan peminjaman, pengembalian, dan penghitungan denda otomatis (Rp 2.000/hari).
+* **Pengadaan Buku:** Alur pengusulan buku oleh member hingga penginputan ke katalog oleh pustakawan.
+* **Maintenance Buku:** Pengaturan status ketersediaan buku (Tersedia, Dalam Perbaikan, atau Dipinjam) secara real-time.
+* **Laporan (Pimpinan):** Tabel rekapitulasi bulanan yang mencakup statistik peminjam, buku populer, denda, dan buku rusak.
+* **Dashboard & Katalog:** Ringkasan data (Total Buku/Member) dan fitur pencarian buku berdasarkan judul atau penulis.
 
-- **Framework:** CodeIgniter 4 (PHP 8.1+)
-- **Database:** MySQL
-- **CI/CD:** GitHub Actions
-- **Dev Environment:** Manual Setup (XAMPP/PHP Spark)
+## 🛠️ Cara Instalasi
+Pastikan Anda sudah menginstal XAMPP (dengan PHP versi yang didukung CI4) dan Composer.
 
-## 🛠️ Setup Development Environment (Opsi B)
+1. **Clone Repositori**
+   ```bash
+   git clone https://github.com/flih0k1/proyek-ppl-kelompok-1.git
+   cd nama-repo
 
-1. Clone repo: `git clone [LINK-REPO-KAMU]`
-2. Jalankan `composer install` di folder root.
-3. Salin file `env` ke `.env` dan sesuaikan database.
-4. Jalankan perintah `php spark serve`.
-5. Akses di `http://localhost:8080`.
+2. Instal Dependency
+   ```bash
+   composer install
+
+3. Konfigurasi Database
+- Buat database baru di phpMyAdmin dengan nama db_perpus.
+- Import file perpus2.sql yang tersedia di root folder ke database tersebut.
+- Salin file env menjadi .env dan sesuaikan pengaturan database:
+  ```bash
+  database.default.hostname = localhost
+  database.default.database = db_perpus
+  database.default.username = root
+  database.default.password =
+  database.default.DBDriver = MySQLi
+
+4. Jalankan Aplikasi
+  ```bash
+  php spark serve
+  ```
+
+Buka http://localhost:8080 di browser Anda.
