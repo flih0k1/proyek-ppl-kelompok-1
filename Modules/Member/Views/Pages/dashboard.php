@@ -2,6 +2,7 @@
 $today = date('Y-m-d 00:00:00');
 $uid   = userid();
 
+/* SPRINT 2
 $totalAktif     = $this->db->table('tb_peminjaman')->where(['peminjaman_userid' => $uid, 'peminjaman_status' => 'pinjam'])->countAllResults();
 $totalPinjam    = $this->db->table('tb_peminjaman')->where('peminjaman_userid', $uid)->countAllResults();
 $totalTerlambat = $this->db->table('tb_peminjaman')->where('peminjaman_userid', $uid)->where('peminjaman_status', 'pinjam')->where('peminjaman_date_end <', $today)->countAllResults();
@@ -29,6 +30,7 @@ $riwayat = $this->db->table('tb_peminjaman')
     ->orderBy('peminjaman_date_kembali', 'desc')
     ->limit(4)
     ->get()->getResult();
+*/
 
 $rekomendasi = $this->db->table('tb_buku')
     ->join('tb_kategori_buku', 'tb_kategori_buku.kategori_id = tb_buku.buku_kategori_id', 'left')
@@ -91,7 +93,8 @@ $rekomendasi = $this->db->table('tb_buku')
     </div>
 </div>
 
-<?php if ($dendaBelumBayar > 0): ?>
+<?php /* SPRINT 2 
+if ($dendaBelumBayar > 0): ?>
 <div class="denda-alert rounded-3 p-3 mb-4 d-flex align-items-center gap-3">
     <i class="bi bi-exclamation-triangle-fill text-danger fs-4"></i>
     <div class="flex-grow-1">
@@ -102,8 +105,10 @@ $rekomendasi = $this->db->table('tb_buku')
         Bayar Sekarang
     </a>
 </div>
-<?php endif; ?>
+<?php endif; 
+*/ ?>
 
+<?php /* SPRINT 2 ?>
 <!-- Stat Cards -->
 <div class="row g-3 mb-4">
     <?php foreach ($widget as $s): ?>
@@ -122,7 +127,9 @@ $rekomendasi = $this->db->table('tb_buku')
     </div>
     <?php endforeach; ?>
 </div>
+<?php */ ?>
 
+<?php /* SPRINT 2 ?>
 <div class="row g-4 mb-4">
 
     <!-- Buku Sedang Dipinjam -->
@@ -233,6 +240,7 @@ $rekomendasi = $this->db->table('tb_buku')
     </div>
 
 </div>
+<?php */ ?>
 
 <!-- Rekomendasi Buku -->
 <div class="card border-0 shadow-sm">
