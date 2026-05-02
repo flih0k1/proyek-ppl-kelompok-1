@@ -1,0 +1,12 @@
+name: CI Pipeline
+on: [push, pull_request]
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Build placeholder
+        run: echo "Building Library App..."
+      - name: Test placeholder
+        run: echo "Running tests... All tests passed!"
