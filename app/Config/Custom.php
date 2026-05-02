@@ -43,6 +43,7 @@ class Custom extends BaseConfig
                     'typenotif' => null,
                     'submenu'   => FALSE,
                 ],
+                /* --- SPRINT 2 ---
                 [
                     'title'     => 'Rak Buku',
                     'icon'      => 'bi bi-archive',
@@ -59,9 +60,11 @@ class Custom extends BaseConfig
                     'typenotif' => null,
                     'submenu'   => FALSE,
                 ],
+                --- END SPRINT 2 --- */
             ]
         ],
 
+        /* --- SPRINT 2 ---
         [
             'heading' => 'SIRKULASI',
             'data' => [
@@ -92,6 +95,7 @@ class Custom extends BaseConfig
                 ],
             ]
         ],
+        --- END SPRINT 2 --- */
 
         [
             'heading' => 'ANGGOTA',
@@ -158,6 +162,7 @@ class Custom extends BaseConfig
                     'typenotif' => null,
                     'submenu'   => FALSE,
                 ],
+                /* --- SPRINT 2 ---
                 [
                     'title'     => 'Buku Dipinjam',
                     'icon'      => 'bi bi-bookmark-check',
@@ -174,9 +179,11 @@ class Custom extends BaseConfig
                     'typenotif' => null,
                     'submenu'   => FALSE,
                 ],
+                --- END SPRINT 2 --- */
             ]
         ],
 
+        /* --- SPRINT 2 ---
         [
             'heading' => 'DENDA',
             'data' => [
@@ -190,6 +197,7 @@ class Custom extends BaseConfig
                 ],
             ]
         ],
+        --- END SPRINT 2 --- */
 
         [
             'heading' => 'AKUN',
@@ -231,6 +239,7 @@ class Custom extends BaseConfig
             ]
         ],
 
+        /* --- SPRINT 2 ---
         [
             'heading' => 'LAPORAN',
             'data' => [
@@ -276,6 +285,7 @@ class Custom extends BaseConfig
                 ],
             ]
         ],
+        --- END SPRINT 2 --- */
 
         [
             'heading' => 'AKUN',
