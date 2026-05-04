@@ -1,55 +1,98 @@
-# Sistem Informasi Perpustakaan (SIPUS) - Tugas Kelompok
+# Sistem Informasi Perpustakaan (Perpus2)
 
-## 📝 Deskripsi Proyek
-Proyek ini merupakan aplikasi manajemen perpustakaan berbasis web yang dirancang khusus untuk skala ruang baca Program Studi. Aplikasi ini bertujuan untuk mendigitalisasi proses sirkulasi buku, pengadaan koleksi baru, hingga pelaporan statistik bagi pimpinan.
+Aplikasi Sistem Informasi Perpustakaan yang dibangun menggunakan framework **CodeIgniter 4**. Aplikasi ini menggunakan arsitektur HMVC (Hierarchical Model View Controller) dengan dukungan module, yaitu modul `Admin`, `Auth`, `Member`, dan `Pimpinan`.
 
-## 🚀 Spesifikasi Teknis
-- **Framework:** CodeIgniter 4 (PHP).
-- **Database:** MySQL.
-- **UI Template:** AdminLTE / SB Admin (Responsive Admin Template).
-- **Architecture:** Modular / HMVC Pattern.
+## 🚀 Teknologi yang Digunakan
 
-## 👥 Aktor & Peran (Roles)
-Sistem ini mendukung 3 jenis pengguna:
-1. **Member (Mahasiswa/Dosen):** Melakukan pendaftaran, melihat katalog, dan mengusulkan buku baru.
-2. **Pustakawan (Admin):** Mengelola transaksi peminjaman, pengembalian, status denda, serta manajemen katalog buku.
-3. **Pimpinan (Kaprodi):** Memantau laporan rekapitulasi bulanan dan statistik perpustakaan.
+- **PHP**: ^8.1
+- **Framework**: CodeIgniter 4
+- **Database**: MySQL / MariaDB
+- **Tools**: Composer, Laragon / XAMPP
 
-## ✨ Fitur Utama
-Aplikasi ini dilengkapi dengan modul-modul berikut:
-* **Manajemen Akun (Permission):** Register & Multi-role login serta pembaruan profil pengguna.
-* **Sirkulasi Peminjaman:** Pencatatan peminjaman, pengembalian, dan penghitungan denda otomatis (Rp 2.000/hari).
-* **Pengadaan Buku:** Alur pengusulan buku oleh member hingga penginputan ke katalog oleh pustakawan.
-* **Maintenance Buku:** Pengaturan status ketersediaan buku (Tersedia, Dalam Perbaikan, atau Dipinjam) secara real-time.
-* **Laporan (Pimpinan):** Tabel rekapitulasi bulanan yang mencakup statistik peminjam, buku populer, denda, dan buku rusak.
-* **Dashboard & Katalog:** Ringkasan data (Total Buku/Member) dan fitur pencarian buku berdasarkan judul atau penulis.
+## ⚙️ Persyaratan Sistem
 
-## 🛠️ Cara Instalasi
-Pastikan Anda sudah menginstal XAMPP (dengan PHP versi yang didukung CI4) dan Composer.
+- PHP versi 8.1 atau yang lebih baru.
+- Ekstensi PHP yang dibutuhkan: `intl`, `mbstring`, `mysqli`.
+- [Composer](https://getcomposer.org/) terinstal di sistem Anda.
 
-1. **Clone Repositori**
-   ```bash
-   git clone https://github.com/flih0k1/proyek-ppl-kelompok-1.git
-   cd nama-repo
+## 🛠️ Panduan Instalasi (Setup Awal)
 
-2. Instal Dependency
+1. **Clone atau Ekstrak Repository**
+   Tempatkan folder proyek ini di dalam direktori proyek server lokal Anda (misal di folder `htdocs` atau `www`).
+
+2. **Instal Dependensi**
+   Buka terminal di dalam folder proyek, jalankan:
+
    ```bash
    composer install
+   ```
 
-3. Konfigurasi Database
-- Buat database baru di phpMyAdmin dengan nama db_perpus.
-- Import file perpus2.sql yang tersedia di root folder ke database tersebut.
-- Salin file env menjadi .env dan sesuaikan pengaturan database:
-  ```bash
-  database.default.hostname = localhost
-  database.default.database = db_perpus
-  database.default.username = root
-  database.default.password =
-  database.default.DBDriver = MySQLi
+3. **Konfigurasi Database**
+   - Buat database baru dengan nama `perpus`.
+   - Import database dari file `perpus2.sql` yang ada di root direktori proyek.
+     ```bash
+     mysql -u root -p perpus < perpus2.sql
+     ```
 
-4. Jalankan Aplikasi
-  ```bash
-  php spark serve
-  ```
+4. **Konfigurasi Environment (.env)**
+   Salin file `env` menjadi `.env` lalu sesuaikan isinya:
 
-Buka http://localhost:8080 di browser Anda.
+   ```env
+   CI_ENVIRONMENT = development
+
+   # Database
+   database.default.hostname = localhost
+   database.default.database = perpus
+   database.default.username = root
+   database.default.password =
+
+   # (Opsional) Konfigurasi Email jika di masa depan akan digunakan
+   # email.SMTPHost = smtp.gmail.com
+   # email.SMTPUser = email-anda@gmail.com
+   # email.SMTPPass = password-aplikasi-anda
+   # email.SMTPPort = 587
+   # email.SMTPCrypto = tls
+   ```
+
+5. **Jalankan Aplikasi**
+   ```bash
+   php spark serve
+   ```
+   Aplikasi dapat diakses di `http://localhost:8080/`.
+
+---
+
+## 🔐 Panduan Fitur Autentikasi
+
+### 1. Registrasi Akun Baru
+
+1. Buka halaman registrasi melalui URL: `http://localhost:8080/auth/register` (atau klik tombol daftar pada halaman login).
+2. Isi form pendaftaran dengan informasi yang diminta: Username, Email, Nomor Whatsapp, Nama Lengkap, dan Password.
+3. Submit form. Sistem akan memvalidasi (username & email belum terpakai, password minimal 6 karakter).
+4. Jika berhasil, Anda akan diarahkan ke halaman login dan bisa langsung masuk.
+
+### 2. Login
+
+1. Buka halaman login: `http://localhost:8080/auth/login`
+2. Masukkan _username_ dan _password_ Anda.
+3. Jika kredensial benar, Anda akan diarahkan ke _dashboard_ utama (sesuai dengan role Anda: Admin, Member, atau Pimpinan).
+
+### 3. Fitur Keamanan
+
+- **Validasi Terpusat**: Seluruh form registrasi dan perubahan password dilindungi oleh validasi (minimal panjang karakter, format valid, keunikan username/email).
+- **Enkripsi Kata Sandi**: Menggunakan standar enkripsi Bcrypt bawaan pustaka IonAuth.
+
+---
+
+## 💡 Troubleshooting (Penyelesaian Masalah)
+
+- **"Akun Anda Tidak Aktif"**:
+  Pengguna telah dinonaktifkan oleh Admin. Silakan hubungi Pimpinan/Admin untuk mengaktifkan akun.
+- **"Username atau password salah"**:
+  Pastikan kredensial yang dimasukkan benar.
+
+## 📂 Struktur Direktori Utama
+
+- `app/` : Konfigurasi framework dan inti dari CodeIgniter 4.
+- `Modules/` : Modul yang dikembangkan dengan pola HMVC, berisi direktori spesifik untuk fungsionalitas `Admin`, `Auth`, `Member`, dan `Pimpinan`.
+- `public/` : Tempat diletakkannya _assets_ aplikasi (CSS, JS, Images) serta file _entry point_ aplikasi (`index.php`).
