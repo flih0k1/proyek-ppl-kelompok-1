@@ -1,0 +1,23 @@
+
+/* HR TEXT */
+.hr-text {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-top: 1rem !important;
+}
+
+.hr-text::before,
+.hr-text::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+}
+
+.hr-text::before {
+  margin-right: 0.75rem;
+}
+
+.hr-text::after {
+  margin-left: 0.75rem;
+}
