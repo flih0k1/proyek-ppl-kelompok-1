@@ -195,6 +195,7 @@ $total   = (clone $base())->countAllResults();
                     data-bs-title="<?= esc($b->buku_judul) ?>">
                     <i class="bi bi-eye"></i>
                 </button>
+                <?php /* SPRINT 2 ?>
                 <?php if ($b->buku_status == 1): ?>
                 <button class="btn btn-sm btn-primary flex-grow-1 <?= $tersedia <= 0 ? 'disabled' : '' ?>"
                     <?= $tersedia > 0 ? "data-bs-toggle=\"modal\" data-bs-target=\"#dinamicModal2\"
@@ -208,8 +209,8 @@ $total   = (clone $base())->countAllResults();
                         <i class="bi bi-x me-1"></i>
                         Tidak Tersedia
                     </button>
-
                 <?php endif; ?>
+                <?php */ ?>
             </div>
         </div>
     </div>
