@@ -154,7 +154,7 @@ $total   = (clone $base())->countAllResults();
 <?php else: ?>
 <div class="row g-3 mb-4">
     <?php foreach ($getdata as $b):
-        $dipinjam  = model('Usermodel')->buku_outstok($b->buku_id); // nanti dari query aktif
+        $dipinjam  = model('Usermodel')->buku_outstok($b->buku_id); 
         $tersedia  = $b->buku_stok - $dipinjam;
         $tersedia  = max(0, $tersedia);
         $stokClass = $tersedia <= 0 ? 'stok-badge-habis' : ($tersedia <= 2 ? 'stok-badge-tipis' : 'stok-badge-ok');
@@ -195,7 +195,7 @@ $total   = (clone $base())->countAllResults();
                     data-bs-title="<?= esc($b->buku_judul) ?>">
                     <i class="bi bi-eye"></i>
                 </button>
-                <?php /* SPRINT 2 ?>
+
                 <?php if ($b->buku_status == 1): ?>
                 <button class="btn btn-sm btn-primary flex-grow-1 <?= $tersedia <= 0 ? 'disabled' : '' ?>"
                     <?= $tersedia > 0 ? "data-bs-toggle=\"modal\" data-bs-target=\"#dinamicModal2\"
@@ -210,7 +210,6 @@ $total   = (clone $base())->countAllResults();
                         Tidak Tersedia
                     </button>
                 <?php endif; ?>
-                <?php */ ?>
             </div>
         </div>
     </div>
