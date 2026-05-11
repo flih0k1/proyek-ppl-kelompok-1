@@ -14,7 +14,8 @@
 /* -----------------------------------
     1 - General Styles
 ------------------------------------*/
-
+/* adjusted button color for better visibility */
+/* background-color: #0093ff; */
 .website-logo {
   display: inline-block;
   top: 50px;
