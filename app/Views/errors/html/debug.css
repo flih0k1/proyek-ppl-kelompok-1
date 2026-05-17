@@ -71,7 +71,7 @@ p.lead {
     text-align: center;
     padding: calc(4px + 0.2083vw);
     width: 100%;
-    top: 0;
+    top: 1;
     position: fixed;
 }
 
@@ -192,3 +192,4 @@ td pre {
 .args {
     display: none;
 }
+
