@@ -38,7 +38,6 @@ $search    = get('search');
 }
 </style>
 
-<!-- Hero Search -->
 <div class="search-hero">
     <h5 class="fw-bold mb-1"><i class="bi bi-search me-2"></i>Cari Buku</h5>
     <p class="opacity-75 small mb-3">Temukan buku yang kamu inginkan dari koleksi perpustakaan</p>
@@ -54,20 +53,17 @@ $search    = get('search');
                 Cari
             </button>
         </div>
-        <!-- hidden fields agar filter tetap terbawa saat search -->
         <input type="hidden" name="kat"  value="<?= esc($filterKat) ?>">
         <input type="hidden" name="stok" value="<?= esc($stok) ?>">
     </form>
 </div>
 
-<!-- Filter Bar -->
 <div class="card border-0 shadow-sm mb-4">
     <div class="card-body py-2">
         <form method="get" action="" id="formFilterBar">
             <input type="hidden" name="search" value="<?= esc($search) ?>">
             <div class="d-flex flex-wrap gap-2 align-items-center">
 
-                <!-- Kategori -->
                 <select class="form-select form-select-sm w-auto" name="kat" onchange="this.form.submit()">
                     <option value="">Semua Kategori</option>
                     <?php
@@ -80,14 +76,12 @@ $search    = get('search');
                     <?php endforeach; ?>
                 </select>
 
-                <!-- Stok -->
                 <select class="form-select form-select-sm w-auto" name="stok" onchange="this.form.submit()">
                     <option value="">Semua Stok</option>
                     <option value="tersedia" <?= $stok === 'tersedia' ? 'selected' : '' ?>>Tersedia</option>
                     <option value="habis"    <?= $stok === 'habis'    ? 'selected' : '' ?>>Stok Habis</option>
                 </select>
 
-                <!-- Reset -->
                 <?php if ($search || $filterKat || $stok): ?>
                 <a href="?" class="btn btn-sm btn-outline-danger">
                     <i class="bi bi-x-lg me-1"></i>Reset Filter
@@ -128,7 +122,6 @@ $getdata = (clone $base())->limit($limit, $offset)->get()->getResult();
 $total   = (clone $base())->countAllResults();
 ?>
 
-<!-- Result Info -->
 <div class="d-flex justify-content-between align-items-center mb-3">
     <div class="text-muted small">
         <?php if ($search): ?>
@@ -139,7 +132,6 @@ $total   = (clone $base())->countAllResults();
 </div>
 
 <?php if (empty($getdata)): ?>
-<!-- Empty State -->
 <div class="card border-0 shadow-sm">
     <div class="card-body text-center py-5">
         <i class="bi bi-search fs-1 text-muted opacity-25 d-block mb-3"></i>
@@ -154,7 +146,7 @@ $total   = (clone $base())->countAllResults();
 <?php else: ?>
 <div class="row g-3 mb-4">
     <?php foreach ($getdata as $b):
-        $dipinjam  = model('Usermodel')->buku_outstok($b->buku_id); // nanti dari query aktif
+        $dipinjam  = model('Usermodel')->buku_outstok($b->buku_id); 
         $tersedia  = $b->buku_stok - $dipinjam;
         $tersedia  = max(0, $tersedia);
         $stokClass = $tersedia <= 0 ? 'stok-badge-habis' : ($tersedia <= 2 ? 'stok-badge-tipis' : 'stok-badge-ok');
@@ -166,14 +158,12 @@ $total   = (clone $base())->countAllResults();
     ?>
     <div class="col-6 col-md-4 col-xl-3 col-xxl-2">
         <div class="card border-0 shadow-sm buku-card h-100">
-            <!-- Cover -->
             <div class="position-relative">
                 <img src="<?= $coverSrc ?>" class="buku-cover" alt="<?= esc($b->buku_judul) ?>">
                 <span class="badge position-absolute top-0 end-0 m-2 <?= $stokClass ?>" style="font-size:10px">
                     <i class="bi <?= $stokIcon ?> me-1"></i><?= $stokLabel ?>
                 </span>
             </div>
-            <!-- Info -->
             <div class="card-body p-2 pb-1">
                 <div class="small fw-semibold lh-sm mb-1" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">
                     <?= esc($b->buku_judul) ?>
@@ -187,7 +177,6 @@ $total   = (clone $base())->countAllResults();
                 </span>
                 <?php endif; ?>
             </div>
-            <!-- Aksi -->
             <div class="card-footer bg-white border-top p-2 d-flex gap-1">
                 <button class="btn btn-sm btn-outline-info flex-shrink-0"
                     data-bs-toggle="modal" data-bs-target="#dinamicModal2"
@@ -195,6 +184,7 @@ $total   = (clone $base())->countAllResults();
                     data-bs-title="<?= esc($b->buku_judul) ?>">
                     <i class="bi bi-eye"></i>
                 </button>
+
                 <?php if ($b->buku_status == 1): ?>
                 <button class="btn btn-sm btn-primary flex-grow-1 <?= $tersedia <= 0 ? 'disabled' : '' ?>"
                     <?= $tersedia > 0 ? "data-bs-toggle=\"modal\" data-bs-target=\"#dinamicModal2\"
@@ -208,7 +198,6 @@ $total   = (clone $base())->countAllResults();
                         <i class="bi bi-x me-1"></i>
                         Tidak Tersedia
                     </button>
-
                 <?php endif; ?>
             </div>
         </div>
@@ -218,7 +207,6 @@ $total   = (clone $base())->countAllResults();
 <?php endif; ?>
 
 
-<!-- Pagination -->
 <div class="d-flex justify-content-between align-items-center">
     <small class="text-muted">
         Halaman <?= $page ?> dari <?= max(1, ceil($total / $limit)) ?>
