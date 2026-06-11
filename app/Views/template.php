@@ -19,8 +19,6 @@
     <script src="<?php echo base_url('assets/vendors/jquery-easy-loading/dist/jquery.loading.min.js') ?>"></script>
     <link href="<?php echo base_url("assets/backend/libs/sweetalert2/dist/sweetalert2.min.css") ?>" rel="stylesheet">
     <link href="<?php echo base_url("assets/backend/libs/sweetalert2/dist/sweetalert2.css") ?>" rel="stylesheet">
-
-
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
 
