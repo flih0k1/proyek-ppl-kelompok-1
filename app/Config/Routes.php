@@ -14,6 +14,18 @@ $routes->get('login', 'Auth::login');
 $routes->get('signup', 'Auth::register');
 $routes->get('logout', 'Auth::logout');
 
+// BLOKIR ROUTE UNTUK FITUR YANG BELUM MASUK SPRINT 1
+$blocked_sprint2 = function() {
+    echo "<div style='text-align:center; margin-top:50px; font-family: sans-serif;'>
+            <h1>Maaf, Fitur Belum Tersedia!</h1>
+            <p>Fitur ini akan dirilis pada Sprint berikutnya.</p>
+            <a href='javascript:history.back()'>Kembali</a>
+          </div>";
+    exit;
+};
+
+$routes->get('pimpinan/laporan-(.*)', $blocked_sprint2);
+
 $routes->group('admin', ['namespace' => 'Modules\Admin\Controllers'], function ($routes) {
     $routes->get('modal/(:any)', 'Admin::modal/$1');
     $routes->get('getdata/(:any)/(:any)', 'Admin::getdata/$1/$2');
