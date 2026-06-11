@@ -57,7 +57,7 @@ class Buku extends Model
             'buku_judul' => post('buku_judul'),
             'buku_stok' => post('buku_stok'),
             'buku_kategori_id' => post('buku_kategori_id'),
-            'buku_rak_id' => post('buku_kategori_id'),
+            'buku_rak_id' => post('buku_rak_id'),
             'buku_penerbit' => post('buku_penerbit'),
             'buku_tahun' => post('buku_tahun'),
             'buku_desc' => post('buku_desc'),
@@ -69,6 +69,21 @@ class Buku extends Model
         ];
 
         if (self::$data['status']) {
+            $penulis = trim(post('buku_penulis') ?? '');
+            if ($penulis !== '') {
+                $cek_p = $this->db->table('tb_penulis')->where('penulis_nama', $penulis)->get()->getRow();
+                if (!$cek_p) {
+                    $this->db->table('tb_penulis')->insert(['penulis_nama' => $penulis]);
+                }
+            }
+
+            $penerbit = trim(post('buku_penerbit') ?? '');
+            if ($penerbit !== '') {
+                $cek_pb = $this->db->table('tb_penerbit')->where('penerbit_nama', $penerbit)->get()->getRow();
+                if (!$cek_pb) {
+                    $this->db->table('tb_penerbit')->insert(['penerbit_nama' => $penerbit]);
+                }
+            }
 
             $this->db->table('tb_buku')->insert($data_insert);
             if (post('code')) {
@@ -123,7 +138,7 @@ class Buku extends Model
             'buku_judul' => post('buku_judul'),
             'buku_stok' => post('buku_stok'),
             'buku_kategori_id' => post('buku_kategori_id'),
-            'buku_rak_id' => post('buku_kategori_id'),
+            'buku_rak_id' => post('buku_rak_id'),
             'buku_penerbit' => post('buku_penerbit'),
             'buku_tahun' => post('buku_tahun'),
             'buku_desc' => post('buku_desc'),
@@ -135,6 +150,21 @@ class Buku extends Model
             $data_update['buku_cover'] = $cover;
         }
         if (self::$data['status']) {
+            $penulis = trim(post('buku_penulis') ?? '');
+            if ($penulis !== '') {
+                $cek_p = $this->db->table('tb_penulis')->where('penulis_nama', $penulis)->get()->getRow();
+                if (!$cek_p) {
+                    $this->db->table('tb_penulis')->insert(['penulis_nama' => $penulis]);
+                }
+            }
+
+            $penerbit = trim(post('buku_penerbit') ?? '');
+            if ($penerbit !== '') {
+                $cek_pb = $this->db->table('tb_penerbit')->where('penerbit_nama', $penerbit)->get()->getRow();
+                if (!$cek_pb) {
+                    $this->db->table('tb_penerbit')->insert(['penerbit_nama' => $penerbit]);
+                }
+            }
 
             $this->db->table('tb_buku')->where('buku_code', post('code'))->update($data_update);
 
@@ -564,5 +594,175 @@ class Buku extends Model
         }
 
         return self::$data;
+    }
+
+    function add_penulis()
+    {
+        if (Self::$data['status']) {
+            $nama = post('penulis_nama');
+            foreach ($nama as $n) {
+                if (trim($n) !== '') {
+                    $this->db->table('tb_penulis')->insert([
+                        'penulis_nama'         => trim($n),
+                    ]);
+                }
+            }
+            Self::$data['heading']      = "Berhasil";
+            Self::$data['message']      = "Penulis Baru Berhasil Ditambahkan";
+            Self::$data['type']         = "success";
+        } else {
+            Self::$data['heading']      = "Gagal";
+            Self::$data['type']         = "error";
+        }
+        return Self::$data;
+    }
+
+    function update_penulis()
+    {
+        $this->validation->setRules([
+            'penulis_nama'    => 'required',
+        ]);
+        if (!$this->validation->withRequest($this->request)->run()) {
+            self::$data['status']  = false;
+            self::$data['message'] = implode('<br/>', $this->validation->getErrors());
+        }
+        $cek = $this->db->table('tb_penulis')->where('penulis_id', post('id'))->get();
+        if ($cek->getNumRows() == 0) {
+            self::$data['status']  = false;
+            self::$data['message'] = 'Data Penulis Tidak Ditemukan';
+        }
+        if (Self::$data['status']) {
+            $old_name = $cek->getRow()->penulis_nama;
+            $new_name = trim(post('penulis_nama'));
+            
+            // update in tb_buku
+            $this->db->table('tb_buku')->where('buku_penulis', $old_name)->update(['buku_penulis' => $new_name]);
+            
+            // update in tb_penulis
+            $this->db->table('tb_penulis')->where('penulis_id', post('id'))->update(['penulis_nama' => $new_name]);
+
+            Self::$data['heading']      = "Berhasil";
+            Self::$data['message']      = "Penulis Berhasil Diperbarui";
+            Self::$data['type']         = "success";
+        } else {
+            Self::$data['heading']      = "Gagal";
+            Self::$data['type']         = "error";
+        }
+        return Self::$data;
+    }
+
+    function delete_penulis()
+    {
+        $this->validation->setRules([
+            'id'              => 'required',
+        ]);
+        if (!$this->validation->withRequest($this->request)->run()) {
+            self::$data['status']  = false;
+            self::$data['message'] = implode('<br/>', $this->validation->getErrors());
+        }
+        $cek = $this->db->table('tb_penulis')->where('penulis_id', post('id'))->get();
+        if ($cek->getNumRows() == 0) {
+            self::$data['status']  = false;
+            self::$data['message'] = 'Data Penulis Tidak Ditemukan';
+        }
+
+        if (Self::$data['status']) {
+            $nama_penulis = $cek->getRow()->penulis_nama;
+            $this->db->table('tb_buku')->where('buku_penulis', $nama_penulis)->update(['buku_penulis' => null]);
+            $this->db->table('tb_penulis')->where('penulis_id', post('id'))->delete();
+
+            Self::$data['heading']      = "Berhasil";
+            Self::$data['message']      = "Penulis Berhasil Dihapus";
+            Self::$data['type']         = "success";
+        } else {
+            Self::$data['heading']      = "Gagal";
+            Self::$data['type']         = "error";
+        }
+        return Self::$data;
+    }
+
+    function add_penerbit()
+    {
+        if (Self::$data['status']) {
+            $nama = post('penerbit_nama');
+            foreach ($nama as $n) {
+                if (trim($n) !== '') {
+                    $this->db->table('tb_penerbit')->insert([
+                        'penerbit_nama'         => trim($n),
+                    ]);
+                }
+            }
+            Self::$data['heading']      = "Berhasil";
+            Self::$data['message']      = "Penerbit Baru Berhasil Ditambahkan";
+            Self::$data['type']         = "success";
+        } else {
+            Self::$data['heading']      = "Gagal";
+            Self::$data['type']         = "error";
+        }
+        return Self::$data;
+    }
+
+    function update_penerbit()
+    {
+        $this->validation->setRules([
+            'penerbit_nama'    => 'required',
+        ]);
+        if (!$this->validation->withRequest($this->request)->run()) {
+            self::$data['status']  = false;
+            self::$data['message'] = implode('<br/>', $this->validation->getErrors());
+        }
+        $cek = $this->db->table('tb_penerbit')->where('penerbit_id', post('id'))->get();
+        if ($cek->getNumRows() == 0) {
+            self::$data['status']  = false;
+            self::$data['message'] = 'Data Penerbit Tidak Ditemukan';
+        }
+        if (Self::$data['status']) {
+            $old_name = $cek->getRow()->penerbit_nama;
+            $new_name = trim(post('penerbit_nama'));
+            
+            // update in tb_buku
+            $this->db->table('tb_buku')->where('buku_penerbit', $old_name)->update(['buku_penerbit' => $new_name]);
+            
+            // update in tb_penerbit
+            $this->db->table('tb_penerbit')->where('penerbit_id', post('id'))->update(['penerbit_nama' => $new_name]);
+
+            Self::$data['heading']      = "Berhasil";
+            Self::$data['message']      = "Penerbit Berhasil Diperbarui";
+            Self::$data['type']         = "success";
+        } else {
+            Self::$data['heading']      = "Gagal";
+            Self::$data['type']         = "error";
+        }
+        return Self::$data;
+    }
+
+    function delete_penerbit()
+    {
+        $this->validation->setRules([
+            'id'              => 'required',
+        ]);
+        if (!$this->validation->withRequest($this->request)->run()) {
+            self::$data['status']  = false;
+            self::$data['message'] = implode('<br/>', $this->validation->getErrors());
+        }
+        $cek = $this->db->table('tb_penerbit')->where('penerbit_id', post('id'))->get();
+        if ($cek->getNumRows() == 0) {
+            self::$data['status']  = false;
+            self::$data['message'] = 'Data Penerbit Tidak Ditemukan';
+        }
+
+        if (Self::$data['status']) {
+            $nama_penerbit = $cek->getRow()->penerbit_nama;
+            $this->db->table('tb_buku')->where('buku_penerbit', $nama_penerbit)->update(['buku_penerbit' => null]);
+            $this->db->table('tb_penerbit')->where('penerbit_id', post('id'))->delete();
+
+            Self::$data['heading']      = "Berhasil";
+            Self::$data['message']      = "Penerbit Berhasil Dihapus";
+            Self::$data['type']         = "success";
+        } else {
+            Self::$data['heading']      = "Gagal";
+            Self::$data['type']         = "error";
+        }
+        return Self::$data;
     }
 }

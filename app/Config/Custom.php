@@ -43,7 +43,22 @@ class Custom extends BaseConfig
                     'typenotif' => null,
                     'submenu'   => FALSE,
                 ],
-                /* --- SPRINT 2 ---
+                [
+                    'title'     => 'Penulis Buku',
+                    'icon'      => 'bi bi-person',
+                    'url'       => 'admin/data-penulis',
+                    'notif'     => 0,
+                    'typenotif' => null,
+                    'submenu'   => FALSE,
+                ],
+                [
+                    'title'     => 'Penerbit Buku',
+                    'icon'      => 'bi bi-building',
+                    'url'       => 'admin/data-penerbit',
+                    'notif'     => 0,
+                    'typenotif' => null,
+                    'submenu'   => FALSE,
+                ],
                 [
                     'title'     => 'Rak Buku',
                     'icon'      => 'bi bi-archive',
@@ -52,7 +67,7 @@ class Custom extends BaseConfig
                     'typenotif' => null,
                     'submenu'   => FALSE,
                 ],
-                    [
+                [
                     'title'     => 'Maintenance',
                     'icon'      => 'bi bi-wrench',
                     'url'       => 'admin/data-maintenance',
@@ -60,11 +75,9 @@ class Custom extends BaseConfig
                     'typenotif' => null,
                     'submenu'   => FALSE,
                 ],
-                --- END SPRINT 2 --- */
             ]
         ],
 
-        /* --- SPRINT 2 ---
         [
             'heading' => 'SIRKULASI',
             'data' => [
@@ -95,7 +108,6 @@ class Custom extends BaseConfig
                 ],
             ]
         ],
-        --- END SPRINT 2 --- */
 
         [
             'heading' => 'ANGGOTA',
@@ -162,7 +174,6 @@ class Custom extends BaseConfig
                     'typenotif' => null,
                     'submenu'   => FALSE,
                 ],
-                /* --- SPRINT 2 ---
                 [
                     'title'     => 'Buku Dipinjam',
                     'icon'      => 'bi bi-bookmark-check',
@@ -179,11 +190,9 @@ class Custom extends BaseConfig
                     'typenotif' => null,
                     'submenu'   => FALSE,
                 ],
-                --- END SPRINT 2 --- */
             ]
         ],
 
-        /* --- SPRINT 2 ---
         [
             'heading' => 'DENDA',
             'data' => [
@@ -197,7 +206,6 @@ class Custom extends BaseConfig
                 ],
             ]
         ],
-        --- END SPRINT 2 --- */
 
         [
             'heading' => 'AKUN',
