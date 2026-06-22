@@ -13276,131 +13276,7 @@ input.form-control[type="range"] {
 .popover-header {
   margin-top: 0;
 }
-.progress-sm {
-  height: 5px !important;
-}
-.progress-md {
-  height: 8px !important;
-}
-.progress-lg {
-  height: 12px !important;
-}
-.progress-xl {
-  height: 15px;
-}
-.progress {
-  margin-top: 18px;
-}
-.progress-animated {
-  animation-duration: 5s;
-  animation-name: animationProgress;
-  transition: 5s all;
-}
-.progress-bar-alt-primary {
-  background-color: rgba(40, 127, 113, 0.2);
-}
-.progress-bar-alt-secondary {
-  background-color: rgba(150, 59, 104, 0.2);
-}
-.progress-bar-alt-success {
-  background-color: rgba(39, 134, 241, 0.2);
-}
-.progress-bar-alt-info {
-  background-color: rgba(115, 187, 226, 0.2);
-}
-.progress-bar-alt-warning {
-  background-color: rgba(245, 148, 64, 0.2);
-}
-.progress-bar-alt-danger {
-  background-color: rgba(236, 52, 76, 0.2);
-}
-.progress-bar-alt-light {
-  background-color: rgba(240, 244, 247, 0.2);
-}
-.progress-bar-alt-dark {
-  background-color: rgba(74, 90, 107, 0.2);
-}
-@keyframes animationProgress {
-  from {
-    width: 0;
-  }
-}
-body {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  background-color: #f8f9fa;
-}
-body.loading {
-  visibility: hidden;
-  opacity: 0;
-}
-@media print {
-  .app-sidebar-menu,
-  .d-flex,
-  .topbar-custom {
-    display: none !important;
-  }
-}
-.table-traffic td {
-  font-weight: 400;
-  vertical-align: middle;
-  font-size: 14px;
-  padding: 11px 11px;
-}
-.table-traffic thead th {
-  padding: 0 11px;
-  background-color: #fff;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  font-weight: 600;
-}
-.table-traffic tbody tr:last-child td {
-  border-bottom: none;
-}
-.table-traffic tr td:first-child,
-.table-traffic tr th:first-child {
-  padding-right: 1.25rem;
-}
-.table-traffic tr td:last-child,
-.table-traffic tr th:last-child {
-  padding-left: 1.25rem;
-}
-.table-stock td {
-  font-weight: 400;
-  vertical-align: middle;
-  font-size: 14px;
-  padding: 13px 13px;
-}
-.table-stock thead th {
-  padding: 0 11px;
-  background-color: #fff;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  font-weight: 600;
-}
-.table-stock tbody tr:last-child td {
-  border-bottom: none;
-}
-.table-stock tr td:first-child,
-.table-stock tr th:first-child {
-  padding-right: 1.25rem;
-}
-.table-stock tr td:last-child,
-.table-stock tr th:last-child {
-  padding-left: 1.25rem;
-}
-.table-card td {
-  font-weight: 400;
-  vertical-align: middle;
-  font-size: 14px;
-  padding: 0.75rem 0.6rem;
-}
-.table-card th {
-  padding: 0.75rem 0.6rem;
-}
-.table-card thead th {
-  font-weight: 600;
-}
+
 .table-card thead th:first-child {
   border-radius: 0 5px 5px 0;
 }
@@ -14612,5 +14488,130 @@ body.loading {
   flex: 1;
   box-shadow: 0 0 20px 0 rgba(250, 251, 251, 0.05);
   border: 3px solid #fff;
+}
+.progress-sm {
+  height: 5px !important;
+}
+.progress-md {
+  height: 8px !important;
+}
+.progress-lg {
+  height: 12px !important;
+}
+.progress-xl {
+  height: 15px;
+}
+.progress {
+  margin-top: 18px;
+}
+.progress-animated {
+  animation-duration: 5s;
+  animation-name: animationProgress;
+  transition: 5s all;
+}
+.progress-bar-alt-primary {
+  background-color: rgba(40, 127, 113, 0.2);
+}
+.progress-bar-alt-secondary {
+  background-color: rgba(150, 59, 104, 0.2);
+}
+.progress-bar-alt-success {
+  background-color: rgba(39, 134, 241, 0.2);
+}
+.progress-bar-alt-info {
+  background-color: rgba(115, 187, 226, 0.2);
+}
+.progress-bar-alt-warning {
+  background-color: rgba(245, 148, 64, 0.2);
+}
+.progress-bar-alt-danger {
+  background-color: rgba(236, 52, 76, 0.2);
+}
+.progress-bar-alt-light {
+  background-color: rgba(240, 244, 247, 0.2);
+}
+.progress-bar-alt-dark {
+  background-color: rgba(74, 90, 107, 0.2);
+}
+@keyframes animationProgress {
+  from {
+    width: 0;
+  }
+}
+body {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  background-color: #f8f9fa;
+}
+body.loading {
+  visibility: hidden;
+  opacity: 0;
+}
+@media print {
+  .app-sidebar-menu,
+  .d-flex,
+  .topbar-custom {
+    display: none !important;
+  }
+}
+.table-traffic td {
+  font-weight: 400;
+  vertical-align: middle;
+  font-size: 14px;
+  padding: 11px 11px;
+}
+.table-traffic thead th {
+  padding: 0 11px;
+  background-color: #fff;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-weight: 600;
+}
+.table-traffic tbody tr:last-child td {
+  border-bottom: none;
+}
+.table-traffic tr td:first-child,
+.table-traffic tr th:first-child {
+  padding-right: 1.25rem;
+}
+.table-traffic tr td:last-child,
+.table-traffic tr th:last-child {
+  padding-left: 1.25rem;
+}
+.table-stock td {
+  font-weight: 400;
+  vertical-align: middle;
+  font-size: 14px;
+  padding: 13px 13px;
+}
+.table-stock thead th {
+  padding: 0 11px;
+  background-color: #fff;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-weight: 600;
+}
+.table-stock tbody tr:last-child td {
+  border-bottom: none;
+}
+.table-stock tr td:first-child,
+.table-stock tr th:first-child {
+  padding-right: 1.25rem;
+}
+.table-stock tr td:last-child,
+.table-stock tr th:last-child {
+  padding-left: 1.25rem;
+}
+.table-card td {
+  font-weight: 400;
+  vertical-align: middle;
+  font-size: 14px;
+  padding: 0.75rem 0.6rem;
+}
+.table-card th {
+  padding: 0.75rem 0.6rem;
+}
+.table-card thead th {
+  font-weight: 600;
 }
 /*## sourceMappingURL=app-rtl.min.css.map */

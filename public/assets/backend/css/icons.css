@@ -29637,6 +29637,30 @@ File: Icons CSS File
   content: "\f0da6";
 }
 
+.mdi-zodiac-gemini::before {
+  content: "\f0a81";
+}
+
+.mdi-zodiac-leo::before {
+  content: "\f0a82";
+}
+
+.mdi-zodiac-libra::before {
+  content: "\f0a83";
+}
+
+.mdi-zodiac-pisces::before {
+  content: "\f0a84";
+}
+
+.mdi-zodiac-sagittarius::before {
+  content: "\f0a85";
+}
+
+.mdi-zodiac-scorpio::before {
+  content: "\f0a86";
+}
+
 .mdi-wiper-wash-alert::before {
   content: "\f18df";
 }
@@ -29781,29 +29805,6 @@ File: Icons CSS File
   content: "\f0a80";
 }
 
-.mdi-zodiac-gemini::before {
-  content: "\f0a81";
-}
-
-.mdi-zodiac-leo::before {
-  content: "\f0a82";
-}
-
-.mdi-zodiac-libra::before {
-  content: "\f0a83";
-}
-
-.mdi-zodiac-pisces::before {
-  content: "\f0a84";
-}
-
-.mdi-zodiac-sagittarius::before {
-  content: "\f0a85";
-}
-
-.mdi-zodiac-scorpio::before {
-  content: "\f0a86";
-}
 
 .mdi-zodiac-taurus::before {
   content: "\f0a87";
