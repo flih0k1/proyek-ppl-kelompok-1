@@ -1,11 +1,11 @@
-/*------------------------------------------------------------------
+/*-------------------------------------------------------------------
  * Theme Name: iofrm - theme
  * Theme URI: http://www.brandio.io/envato/iofrm
  * Author: Brandio
  * Author URI: http://www.brandio.io/
  * Copyright 2019 Brandio.
  -------------------------------------------------------------------*/
-/*------------------------------------------------------------------
+/*-------------------------------------------------------------------
 [Table of contents]
 
 1. General Styles.
@@ -14,7 +14,8 @@
 /* -----------------------------------
     1 - General Styles
 ------------------------------------*/
-
+/* adjusted button color for better visibility */
+/* background-color: #0093ff; */
 .website-logo {
   display: inline-block;
   top: 50px;
