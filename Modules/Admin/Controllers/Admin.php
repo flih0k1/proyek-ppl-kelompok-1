@@ -45,8 +45,8 @@ class Admin extends Controller
     // modal
     public function modal($filename = null)
     {
-       if (!$this->ionAuth->isAdmin()) {
-            throw \CodeIgniter\Exceptions\PageForbiddenException::forPageForbidden();
+        if (!$this->ionAuth->isAdmin()) {
+            return $this->response->setStatusCode(403)->setBody('<div class="alert alert-danger">Akses Ditolak.</div>');
         }
 
         // Sanitasi input
@@ -76,7 +76,7 @@ class Admin extends Controller
     {
 
         if (!$this->ionAuth->isAdmin()) {
-            throw \CodeIgniter\Exceptions\PageForbiddenException::forPageForbidden();
+            return $this->response->setJSON(['status' => false, 'message' => 'Akses Ditolak.'], 403);
         }
         // Bersihkan nama model dan method untuk keamanan
         $model = ucfirst(preg_replace('/[^a-zA-Z0-9_]/', '', $model));
@@ -115,7 +115,7 @@ class Admin extends Controller
     public function postdata($model, $method)
     {
         if (!$this->ionAuth->isAdmin()) {
-            throw \CodeIgniter\Exceptions\PageForbiddenException::forPageForbidden();
+            return $this->response->setJSON(['status' => false, 'message' => 'Akses Ditolak.'], 403);
         }
         // Bersihkan nama model dan method untuk keamanan
         $model = ucfirst(preg_replace('/[^a-zA-Z0-9_]/', '', $model));

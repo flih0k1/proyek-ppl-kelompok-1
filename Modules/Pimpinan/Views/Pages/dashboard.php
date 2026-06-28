@@ -4,21 +4,16 @@ $today = date('Y-m-d H:i:s');
 // Fetch Real Stats
 $total_buku = $this->db->table('tb_buku')->countAllResults();
 $anggota_aktif = $this->db->table('tb_users')->join('tb_users_groups', 'tb_users.id = tb_users_groups.user_id')->where('group_id', 2)->where('active', 1)->countAllResults();
-/* SPRINT 2
 $sedang_dipinjam = $this->db->table('tb_peminjaman')->where('peminjaman_status', 'pinjam')->countAllResults();
 $terlambat = $this->db->table('tb_peminjaman')->where('peminjaman_status', 'pinjam')->where('peminjaman_date_end <', $today)->countAllResults();
-*/
 
 $stats = [
     ['label' => 'Total Buku', 'value' => $total_buku, 'icon' => 'bi-book', 'color' => 'primary', 'sub' => 'Koleksi terdaftar'],
     ['label' => 'Anggota Aktif', 'value' => $anggota_aktif, 'icon' => 'bi-people', 'color' => 'success', 'sub' => 'Member aktif'],
-    /* SPRINT 2
     ['label' => 'Dipinjam', 'value' => $sedang_dipinjam, 'icon' => 'bi-bookmark-check', 'color' => 'warning', 'sub' => 'Sedang berjalan'],
     ['label' => 'Terlambat', 'value' => $terlambat, 'icon' => 'bi-exclamation-circle', 'color' => 'danger', 'sub' => 'Perlu tindakan'],
-    */
 ];
 
-/* SPRINT 2
 // Peminjaman Terbaru
 $peminjaman_terbaru = $this->db->table('tb_peminjaman')
     ->join('tb_users', 'tb_users.id = tb_peminjaman.peminjaman_userid', 'left')
@@ -36,7 +31,6 @@ $buku_populer = $this->db->table('tb_peminjaman')
     ->orderBy('total_dipinjam', 'desc')
     ->limit(5)
     ->get()->getResult();
-*/
 
 // Anggota Baru
 $anggota_baru = $this->db->table('tb_users')
@@ -76,12 +70,11 @@ $status_badge = [
 
 <div class="row g-3 mb-4">
     <!-- Peminjaman Terbaru -->
-    <?php /* SPRINT 2 ?>
     <div class="col-12 col-xl-8">
         <div class="card border-0 shadow-sm h-100">
             <div class="card-header bg-white border-bottom d-flex justify-content-between align-items-center">
                 <span class="fw-semibold"><i class="bi bi-clock-history me-2 text-primary"></i>Peminjaman Terbaru</span>
-                <a href="<?= site_url('admin/data-peminjaman') ?>" class="btn btn-sm btn-outline-primary">Lihat Semua</a>
+                <a href="<?= site_url('pimpinan/laporan-peminjaman') ?>" class="btn btn-sm btn-outline-primary">Lihat Semua</a>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
@@ -132,14 +125,13 @@ $status_badge = [
             </div>
         </div>
     </div>
-    <?php */ ?>
 
     <!-- Anggota Baru -->
     <div class="col-12 col-xl-4">
         <div class="card border-0 shadow-sm h-100">
             <div class="card-header bg-white border-bottom d-flex justify-content-between align-items-center">
                 <span class="fw-semibold"><i class="bi bi-person-plus me-2 text-success"></i>Anggota Baru</span>
-                <a href="<?= site_url('admin/data-anggota') ?>" class="btn btn-sm btn-outline-success">Lihat Semua</a>
+                <a href="<?= site_url('pimpinan/laporan-anggota') ?>" class="btn btn-sm btn-outline-success">Lihat Semua</a>
             </div>
             <div class="card-body p-0">
                 <ul class="list-group list-group-flush">
@@ -162,13 +154,12 @@ $status_badge = [
 </div>
 
 <!-- Buku Populer -->
-<?php /* SPRINT 2 ?>
 <div class="row g-3">
     <div class="col-12">
         <div class="card border-0 shadow-sm">
             <div class="card-header bg-white border-bottom d-flex justify-content-between align-items-center">
                 <span class="fw-semibold"><i class="bi bi-fire me-2 text-danger"></i>Buku Paling Banyak Dipinjam</span>
-                <a href="<?= site_url('admin/data-buku') ?>" class="btn btn-sm btn-outline-danger">Lihat Semua</a>
+                <a href="<?= site_url('pimpinan/laporan-koleksi') ?>" class="btn btn-sm btn-outline-danger">Lihat Semua</a>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
@@ -206,4 +197,3 @@ $status_badge = [
         </div>
     </div>
 </div>
-<?php */ ?>

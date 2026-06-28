@@ -28,6 +28,15 @@ class Pimpinan extends Controller
         if (!$this->ionAuth->loggedIn()) {
             return redirect()->to('login');
         }
+        $user = userdata();
+        if (!$user || $user->role !== 'pimpinan') {
+            if ($user && $user->role === 'admin') {
+                return redirect()->to('admin/dashboard');
+            } elseif ($user && $user->role === 'member') {
+                return redirect()->to('dashboard');
+            }
+            return redirect()->to('login');
+        }
         $path = ROOTPATH . 'Modules/'.$this->modul.'/Views/Pages/' . $page . '.php';
         if (!is_file($path)) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
@@ -44,8 +53,9 @@ class Pimpinan extends Controller
     // modal
     public function modal($filename = null)
     {
-       if (!$this->ionAuth->loggedIn()) {
-            throw \CodeIgniter\Exceptions\PageForbiddenException::forPageForbidden();
+        $user = userdata();
+        if (!$this->ionAuth->loggedIn() || !$user || $user->role !== 'pimpinan') {
+            return $this->response->setStatusCode(403)->setBody('<div class="alert alert-danger">Akses Ditolak.</div>');
         }
 
         // Sanitasi input
@@ -73,9 +83,9 @@ class Pimpinan extends Controller
     }
     public function getdata($model, $method)
     {
-
-        if (!$this->ionAuth->loggedIn()) {
-            throw \CodeIgniter\Exceptions\PageForbiddenException::forPageForbidden();
+        $user = userdata();
+        if (!$this->ionAuth->loggedIn() || !$user || $user->role !== 'pimpinan') {
+            return $this->response->setJSON(['status' => false, 'message' => 'Akses Ditolak.'], 403);
         }
         // Bersihkan nama model dan method untuk keamanan
         $model = ucfirst(preg_replace('/[^a-zA-Z0-9_]/', '', $model));
@@ -113,8 +123,9 @@ class Pimpinan extends Controller
     }
     public function postdata($model, $method)
     {
-        if (!$this->ionAuth->loggedIn()) {
-            throw \CodeIgniter\Exceptions\PageForbiddenException::forPageForbidden();
+        $user = userdata();
+        if (!$this->ionAuth->loggedIn() || !$user || $user->role !== 'pimpinan') {
+            return $this->response->setJSON(['status' => false, 'message' => 'Akses Ditolak.'], 403);
         }
         // Bersihkan nama model dan method untuk keamanan
         $model = ucfirst(preg_replace('/[^a-zA-Z0-9_]/', '', $model));

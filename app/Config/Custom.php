@@ -247,7 +247,6 @@ class Custom extends BaseConfig
             ]
         ],
 
-        /* --- SPRINT 2 ---
         [
             'heading' => 'LAPORAN',
             'data' => [
@@ -293,7 +292,6 @@ class Custom extends BaseConfig
                 ],
             ]
         ],
-        --- END SPRINT 2 --- */
 
         [
             'heading' => 'AKUN',
