@@ -24,21 +24,7 @@ $blocked_sprint2 = function() {
     exit;
 };
 
-$routes->get('admin/data-rak-buku', $blocked_sprint2);
-$routes->get('admin/data-maintenance', $blocked_sprint2);
-$routes->get('admin/data-peminjaman', $blocked_sprint2);
-$routes->get('admin/data-tagihan-member', $blocked_sprint2);
-$routes->get('admin/data-request-buku', $blocked_sprint2);
 $routes->get('pimpinan/laporan-(.*)', $blocked_sprint2);
-$routes->get('data-pinjaman-buku', $blocked_sprint2);
-$routes->get('request-buku', $blocked_sprint2);
-$routes->get('data-tagihan', $blocked_sprint2);
-
-// Blokir modal & action peminjaman/request untuk Member
-$routes->get('member/modal/pinjam-buku', $blocked_sprint2);
-$routes->post('member/postdata/pinjam/pinjam_buku', $blocked_sprint2);
-$routes->get('member/modal/add-request', $blocked_sprint2);
-$routes->post('member/postdata/pinjam/request_buku', $blocked_sprint2);
 
 $routes->group('admin', ['namespace' => 'Modules\Admin\Controllers'], function ($routes) {
     $routes->get('modal/(:any)', 'Admin::modal/$1');

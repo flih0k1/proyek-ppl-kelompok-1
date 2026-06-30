@@ -4,21 +4,16 @@ $today = date('Y-m-d H:i:s');
 // Fetch Real Stats
 $total_buku = $this->db->table('tb_buku')->countAllResults();
 $anggota_aktif = $this->db->table('tb_users')->join('tb_users_groups', 'tb_users.id = tb_users_groups.user_id')->where('group_id', 2)->where('active', 1)->countAllResults();
-/* SPRINT 2
 $sedang_dipinjam = $this->db->table('tb_peminjaman')->where('peminjaman_status', 'pinjam')->countAllResults();
 $terlambat = $this->db->table('tb_peminjaman')->where('peminjaman_status', 'pinjam')->where('peminjaman_date_end <', $today)->countAllResults();
-*/
 
 $stats = [
     ['label' => 'Total Buku', 'value' => $total_buku, 'icon' => 'bi-book', 'color' => 'primary', 'sub' => 'Koleksi terdaftar'],
     ['label' => 'Anggota Aktif', 'value' => $anggota_aktif, 'icon' => 'bi-people', 'color' => 'success', 'sub' => 'Member aktif'],
-    /* SPRINT 2
     ['label' => 'Dipinjam', 'value' => $sedang_dipinjam, 'icon' => 'bi-bookmark-check', 'color' => 'warning', 'sub' => 'Sedang berjalan'],
     ['label' => 'Terlambat', 'value' => $terlambat, 'icon' => 'bi-exclamation-circle', 'color' => 'danger', 'sub' => 'Perlu tindakan'],
-    */
 ];
 
-/* SPRINT 2
 // Peminjaman Terbaru
 $peminjaman_terbaru = $this->db->table('tb_peminjaman')
     ->join('tb_users', 'tb_users.id = tb_peminjaman.peminjaman_userid', 'left')
@@ -36,7 +31,6 @@ $buku_populer = $this->db->table('tb_peminjaman')
     ->orderBy('total_dipinjam', 'desc')
     ->limit(5)
     ->get()->getResult();
-*/
 
 // Anggota Baru
 $anggota_baru = $this->db->table('tb_users')
@@ -76,7 +70,6 @@ $status_badge = [
 
 <div class="row g-3 mb-4">
     <!-- Peminjaman Terbaru -->
-    <?php /* SPRINT 2 ?>
     <div class="col-12 col-xl-8">
         <div class="card border-0 shadow-sm h-100">
             <div class="card-header bg-white border-bottom d-flex justify-content-between align-items-center">
@@ -132,7 +125,6 @@ $status_badge = [
             </div>
         </div>
     </div>
-    <?php */ ?>
 
     <!-- Anggota Baru -->
     <div class="col-12 col-xl-4">
@@ -162,7 +154,6 @@ $status_badge = [
 </div>
 
 <!-- Buku Populer -->
-<?php /* SPRINT 2 ?>
 <div class="row g-3">
     <div class="col-12">
         <div class="card border-0 shadow-sm">
@@ -206,4 +197,3 @@ $status_badge = [
         </div>
     </div>
 </div>
-<?php */ ?>
