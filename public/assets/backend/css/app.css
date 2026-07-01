@@ -14228,6 +14228,12 @@ body[data-sidebar=hidden] .content-page {
   padding: 0 24px;
 }
 
+.avatar-xxl {
+  height: 7.5rem;
+  width: 7.5rem;
+}
+
+
 @media (max-width: 991.98px) {
   .logo-box {
     width: 70px !important;
@@ -14364,11 +14370,6 @@ body[data-sidebar=hidden] .content-page {
 .avatar-xl {
   height: 6rem;
   width: 6rem;
-}
-
-.avatar-xxl {
-  height: 7.5rem;
-  width: 7.5rem;
 }
 
 .avatar-title {

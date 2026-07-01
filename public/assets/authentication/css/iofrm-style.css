@@ -1837,12 +1837,8 @@ input.sm-content {
   .website-logo .logo {
     background-image: url("../images/logo-light.svg");
   }
-
-  .form-body.without-side .img-holder {
-    display: inline-block;
-  }
-
-  .form-body.without-side .website-logo .logo {
+  
+    .form-body.without-side .website-logo .logo {
     background-image: url("../images/logo-light.svg");
   }
 
@@ -1891,4 +1887,9 @@ input.sm-content {
     text-align: left !important;
     margin-top: 30px;
   }
+
+  .form-body.without-side .img-holder {
+    display: inline-block;
+  }
+
 }

@@ -32,26 +32,6 @@
   width: 100px;
 }
 
-.website-logo-inside img {
-  width: 100px;
-}
-.website-logo-inside .logo img {
-  width: 100px;
-}
-
-.img-holder {
-  width: 550px;
-  background-color: #fafafa;
-}
-
-.img-holder .info-holder h3 {
-  color: #000;
-  text-align: left;
-}
-
-.img-holder .info-holder h3 span {
-  color: #000;
-}
 
 .img-holder .info-holder h2 {
   color: #000;
@@ -85,6 +65,27 @@
 }
 
 .form-holder .form-content ::-moz-placeholder {
+  color: #000;
+}
+
+.website-logo-inside img {
+  width: 100px;
+}
+.website-logo-inside .logo img {
+  width: 100px;
+}
+
+.img-holder {
+  width: 550px;
+  background-color: #fafafa;
+}
+
+.img-holder .info-holder h3 {
+  color: #000;
+  text-align: left;
+}
+
+.img-holder .info-holder h3 span {
   color: #000;
 }
 

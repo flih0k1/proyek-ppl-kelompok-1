@@ -29729,6 +29729,11 @@ File: Icons CSS File
   content: "\f0b4f";
 }
 
+
+.mdi-zend::before {
+  content: "\f0aeb";
+}
+
 .mdi-yeast::before {
   content: "\f05c1";
 }
@@ -29767,10 +29772,6 @@ File: Icons CSS File
 
 .mdi-z-wave::before {
   content: "\f0aea";
-}
-
-.mdi-zend::before {
-  content: "\f0aeb";
 }
 
 .mdi-zigbee::before {
