@@ -3,6 +3,20 @@ function _classCallCheck(e, t) {
   if (!(e instanceof t))
     throw new TypeError("Cannot call a class as a function");
 }
+function _defineProperty(e, t, n) {
+  return (
+    t in e
+      ? Object.defineProperty(e, t, {
+          value: n,
+          enumerable: !0,
+          configurable: !0,
+          writable: !0,
+        })
+      : (e[t] = n),
+    e
+  );
+}
+
 function _defineProperties(e, t) {
   for (var n = 0; n < t.length; n++) {
     var a = t[n];
@@ -16,19 +30,6 @@ function _createClass(e, t, n) {
   return (
     t && _defineProperties(e.prototype, t),
     n && _defineProperties(e, n),
-    e
-  );
-}
-function _defineProperty(e, t, n) {
-  return (
-    t in e
-      ? Object.defineProperty(e, t, {
-          value: n,
-          enumerable: !0,
-          configurable: !0,
-          writable: !0,
-        })
-      : (e[t] = n),
     e
   );
 }
